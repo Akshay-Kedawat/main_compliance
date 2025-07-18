@@ -45,5 +45,8 @@
         'add-question'            => 'Question added successfully.',
         'update-question'         => 'Question updated successfully.',
         'delete-question'         => 'Question deleted successfully.',
+        'list-document-meta-data' => 'List of document meta data.',
+        'add-document-meta-data'  => 'Document meta data added successfully.',
+        'add-document-language'   => 'Document language added successfully.',
     ];
 ?>

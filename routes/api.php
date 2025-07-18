@@ -2,7 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\{LoginController, RegisterController, ForgotPasswordController, ResetPasswordController};
-use App\Http\Controllers\Api\{CountryController, ProfileController, CategoryController, RegulationController, JurisdictionController, DocumentController, UserController, RoleController, PermissionController, QuizController, QuestionController};
+use App\Http\Controllers\Api\{CountryController, ProfileController, CategoryController, RegulationController, JurisdictionController, DocumentController, UserController, RoleController, PermissionController, QuizController, QuestionController, DocumentMetaDataController};
 
 
 Route::post('/login', [LoginController::class, 'login']);
@@ -54,3 +54,7 @@ Route::middleware('api.auth')->group(function () {
     Route::get('my-profile', [ProfileController::class,'getProfile']);
     Route::get('logout', [ProfileController::class,'logout']);
 });
+Route::get('/list-document-meta-data', [DocumentMetaDataController::class, 'getDocumentMetaData']);
+Route::post('/add-document-meta-data', [DocumentMetaDataController::class, 'storeDocumentMetaData']);
+Route::post('/add-document-language', [DocumentMetaDataController::class, 'storeDocumentLanguage']);
+Route::get('/list-document-language', [DocumentMetaDataController::class, 'getDocumentLanguage']);

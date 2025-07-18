@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('document_meta_data', function (Blueprint $table) {
-            $table->string('_idext_document', 100)->primary()->index();
+            $table->id();
+            $table->string('_idext_document', 100)->nullable()->index();
             $table->string('_type_document', 255)->nullable()->index();
             $table->string('_type_subdivision', 255)->nullable();
             $table->string('_local_identifier', 100)->nullable();
@@ -32,6 +33,7 @@ return new class extends Migration
             $table->date('_first_date_entry_in_force')->nullable();
             $table->date('_date_no_longer_in_force')->nullable();
             $table->integer('_crc32_pipeline_checksum')->nullable();
+            $table->text('response_json')->nullable();
             $table->timestamps();
         });
     }

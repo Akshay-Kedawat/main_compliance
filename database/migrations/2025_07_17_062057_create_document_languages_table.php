@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('document_languages', function (Blueprint $table) {
             $table->id();
-            $table->string('_idext_document')->nullable()->index();
-            $table->foreign('_idext_document')->references('_idext_document')->on('document_meta_data')->onDelete('cascade');
+            $table->string('_idext_document', 100)->nullable()->index();
             $table->string('_language', 5)->nullable()->index();
             $table->string('_title', 255)->nullable()->index();
             $table->string('_title_alternative', 255)->nullable();
             $table->string('_title_short', 255)->nullable();
             $table->integer('_crc32_checksum')->nullable();
+            $table->text('response_json')->nullable();
             $table->timestamps();
         });
     }
