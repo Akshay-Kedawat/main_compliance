@@ -2,7 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\{LoginController, RegisterController, ForgotPasswordController, ResetPasswordController};
-use App\Http\Controllers\Api\{CountryController, ProfileController, CategoryController, RegulationController, JurisdictionController, DocumentController, UserController, RoleController, PermissionController, QuizController, QuestionController, DocumentMetaDataController};
+use App\Http\Controllers\Api\{CountryController, ProfileController, CategoryController, RegulationController, JurisdictionController, DocumentController, UserController, RoleController, PermissionController, QuizController, QuestionController, DocumentMetaDataController, DocumentFormController, DocumentKeywordTagController, DocumentManagementFieldController, DocumentRelationController};
 
 
 Route::post('/login', [LoginController::class, 'login']);
@@ -38,7 +38,7 @@ Route::middleware('api.auth')->group(function () {
 
     Route::get('/list-role', [RoleController::class, 'index']);
     Route::post('/assign-role-permission', [RoleController::class, 'assignRolePermission']);
-    
+
     Route::get('/list-permission', [PermissionController::class, 'index']);
 
     Route::get('/list-quiz', [QuizController::class, 'index']);
@@ -58,3 +58,19 @@ Route::get('/list-document-meta-data', [DocumentMetaDataController::class, 'getD
 Route::post('/add-document-meta-data', [DocumentMetaDataController::class, 'storeDocumentMetaData']);
 Route::post('/add-document-language', [DocumentMetaDataController::class, 'storeDocumentLanguage']);
 Route::get('/list-document-language', [DocumentMetaDataController::class, 'getDocumentLanguage']);
+
+// Document Form Routes
+Route::get('/list-document-form', [DocumentFormController::class, 'index']);
+Route::post('/add-document-form', [DocumentFormController::class, 'store']);
+
+// Document Relation Routes
+Route::get('/document-relation', [DocumentRelationController::class, 'index']);
+Route::post('/add-document-relation', [DocumentRelationController::class, 'store']);
+
+// Document Keyword Tag Routes
+Route::get('/list-document-keyword-tag', [DocumentKeywordTagController::class, 'index']);
+Route::post('/add-document-keyword-tag', [DocumentKeywordTagController::class, 'store']);
+
+// Document Management Field Routes
+Route::get('/list-document-management-field', [DocumentManagementFieldController::class, 'index']);
+Route::post('/add-document-management-field', [DocumentManagementFieldController::class, 'store']);
